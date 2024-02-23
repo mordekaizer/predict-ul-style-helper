@@ -1,11 +1,16 @@
 {
   "name": "predict-style-helper",
   "displayName": "Predict Style Helper",
+  "publisher": "MalaevMaksim",
   "description": "A VS Code extension that helps visualize values of variables in @predict-ui/ui-kit",
   "version": "0.0.1",
-  "icon": "./icon.png",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.86.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mordekaizer/predict-ul-style-helper"
   },
   "categories": [
     "Other"
