@@ -5,12 +5,52 @@ import path from 'path';
 export async function activate(context: vscode.ExtensionContext) {
 	const workspaceFolders = vscode.workspace.workspaceFolders;
 	if (workspaceFolders && workspaceFolders[0]) {
-
-
 		const workspacePath = workspaceFolders[0].uri.fsPath;
 		const nodeModulesPath = path.join(workspacePath, 'node_modules', '/@predict-ui/global-styles/dist/style.css');
+	
+		const showValueOnHover = (texts: { label: string, insertText: string, variable: string }[]) => {
+			const hoverProvider = vscode.languages.registerHoverProvider('scss', {
+					provideHover(document, position, token) {
+							const line = document.lineAt(position).text;
+							const hoveredVariables = line.match(/var\(([^)]+)\)/g);
+	
+							if (hoveredVariables) {
+									let hoveredVariable = null;
+	
+									let currentVariable = null;
+									let currentPosition = 0;
+	
+									hoveredVariables.forEach(variable => {
+											const variablePosition = line.indexOf(variable, currentPosition);
+											const variableEndPosition = variablePosition + variable.length;
+	
+											if (position.character >= variablePosition && position.character <= variableEndPosition) {
+													hoveredVariable = variable;
+											}
+	
+											currentPosition = variablePosition + 1;
+									});
+	
+									if (hoveredVariable) {
+											const variableName = hoveredVariable.match(/var\(([^)]+)\)/)[1].trim();
+											const currentVar = texts.find(({ variable }) => variable === variableName);
+	
+											if (currentVar) {
+													const hoverText = new vscode.MarkdownString();
+													hoverText.appendMarkdown(`🔷 ${currentVar.label} 🔷`);
+	
+													return new vscode.Hover(hoverText);
+											}
+									}
+							}
+							return undefined;
+					}
+			});
+	
+			context.subscriptions.push(hoverProvider);
+	};
 
-		const setAutocomplite = (texts: { label: string, insertText: string }[]) => {
+		const setAutocomplite = (texts: { label: string, insertText: string, variable: string  }[]) => {
 			const editor = vscode.window.activeTextEditor;
 			if (!editor) {
 					return;
@@ -61,8 +101,6 @@ export async function activate(context: vscode.ExtensionContext) {
 							cssVariablesArray.push({ variable, value });
 					}
 			}
-			
-			console.log(cssVariablesArray);
 
 			return cssVariablesArray;
 			
@@ -74,15 +112,16 @@ export async function activate(context: vscode.ExtensionContext) {
 					const variables = parseCSSVariables(nodeModulesPath);
 
 					const autocompliteTexts = variables.map(({variable, value}) => {
-						console.log(`${variable} ${value}`);
 						return {
 							label: `var(${variable}) [${value}]`,
 							insertText: `var(${variable})`,
+							variable,
 						};
 					});
 
 
 					setAutocomplite(autocompliteTexts);
+					showValueOnHover(autocompliteTexts);
 
 			} catch (error) {
 				vscode.window.showInformationMessage('Ошибка чтения стилей из @predict-ui/ui-kit');
@@ -90,8 +129,6 @@ export async function activate(context: vscode.ExtensionContext) {
 		};
 
 		extractCssVariables();
-
-		console.log('Predict-ui style helper is active');
 	}
 }
 

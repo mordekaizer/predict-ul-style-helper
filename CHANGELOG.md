@@ -1,9 +1,12 @@
-# Change Log
+# История изменений (CHANGELOG)
 
-All notable changes to the "predict-style-helper" extension will be documented in this file.
+## Версия 1.0.0 (Первый релиз)
+- Добавлено расширение Predict Style Helper.
+- Автоматическое обнаружение и визуализация значений переменных в @predict-ui/ui-kit.
+- Поддержка языков CSS, SCSS, JavaScript, TypeScript, JSON, JSX и TSX.
+- Простота использования и улучшение рабочего процесса стилизации.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## Версия 1.1.0
+- Добавлена подсветка значений переменных при наведении в файлах SCSS.
 
-## [Unreleased]
-
-- Initial release
+Спасибо за использование Predict Style Helper! 🎉

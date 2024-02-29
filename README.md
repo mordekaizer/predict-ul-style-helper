@@ -1,32 +1,24 @@
-Predict Style Helper
+# Predict Style Helper
 
-Predict Style Helper is a Visual Studio Code extension that helps visualize values of variables in @predict-ui/ui-kit.
+Predict Style Helper - это расширение для Visual Studio Code, которое помогает визуализировать значения переменных в @predict-ui/ui-kit.
 
-## Features
+## Особенности
 
-- Automatically detects and visualizes variable values within @predict-ui/ui-kit.
-- Supports CSS, SCSS, JavaScript, TypeScript, JSON, JavaScript React, and TypeScript React languages.
-- Easy to use and enhances the styling workflow.
+- Автоматическое обнаружение и визуализация значений переменных в @predict-ui/ui-kit.
+- Поддерживает языки CSS, SCSS, JavaScript, TypeScript, JSON, JavaScript React и TypeScript React.
+- Прост в использовании и улучшает рабочий процесс стилизации.
 
-## Installation
+## Установка
 
-To install Predict Style Helper, follow these steps:
-1. Open Visual Studio Code.
-2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window.
-3. Search for "Predict Style Helper".
-4. Click Install to install the extension.
-5. Reload Visual Studio Code to activate the extension.
+Чтобы установить Predict Style Helper, выполните следующие шаги:
+1. Откройте Visual Studio Code.
+2. Перейдите во вкладку Extensions, нажав на иконку Extensions на боковой панели окна.
+3. Найдите "Predict Style Helper".
+4. Нажмите Install для установки расширения.
+5. Перезагрузите Visual Studio Code, чтобы активировать расширение.
 
-## Usage
+## Использование
 
-After installing the Predict Style Helper extension, you can start using it in your @predict-ui/ui-kit projects. Simply open a file in one of the supported languages and the extension will automatically highlight and visualize variable values.
+После установки расширения Predict Style Helper, вы можете начать использовать его в ваших проектах @predict-ui/ui-kit. Просто откройте файл на одном из поддерживаемых языков, и расширение автоматически выделит и визуализирует значения переменных.
 
-## Feedback
-
-If you have any feedback, suggestions, or issues related to Predict Style Helper, feel free to contact us at [predictstylehelper@example.com](mailto:predictstylehelper@example.com).
-
-## License
-
-This extension is released under the [MIT License](LICENSE).
-
-Enjoy using Predict Style Helper!
+Наслаждайтесь использованием Predict Style Helper!
